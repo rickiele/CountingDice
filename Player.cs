@@ -13,11 +13,12 @@ namespace ShootingDice
             return new Random().Next(DiceSize) + 1;
         }
 
+        // Override Method - Parent 
         public virtual void Play(Player other)
         {
             // Call roll for "this" object and for the "other" object
-            int myRoll = Roll();
             int otherRoll = other.Roll();
+            int myRoll = Roll();
 
             Console.WriteLine($"{Name} rolls a {myRoll}");
             Console.WriteLine($"{other.Name} rolls a {otherRoll}");

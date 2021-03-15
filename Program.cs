@@ -8,8 +8,9 @@ namespace ShootingDice
     {
         static void Main(string[] args)
         {
-            Player player1 = new Player();
-            player1.Name = "Bob";
+            // Make new players
+            OneHigherPlayer player1 = new OneHigherPlayer();
+            player1.Name = "High Kite Kyle";
 
             Player player2 = new Player();
             player2.Name = "Sue";
