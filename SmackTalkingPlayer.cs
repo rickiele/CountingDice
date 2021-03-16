@@ -8,15 +8,12 @@ namespace ShootingDice
     public class SmackTalkingPlayer : Player
     {
         public string Taunt { get; set; }
+
         public override void Play(Player other)
         {
-            Console.WriteLine($"{this.Name} says:{Taunt}");
+            // base refers to a entire method. in this case, for Play.
             base.Play(other);
-        }
-
-        public SmackTalkingPlayer(string taunt)
-        {
-            Taunt = taunt;
+            Console.WriteLine($"{Name} taunts with: {Taunt}");
         }
     }
 }

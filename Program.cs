@@ -9,32 +9,60 @@ namespace ShootingDice
         static void Main(string[] args)
         {
             // Make new players
-            OneHigherPlayer player1 = new OneHigherPlayer();
-            player1.Name = "High Kite Kyle";
 
-            Player player2 = new Player();
-            player2.Name = "Sue";
+            // ROUND ONE
+            // One Higher Player
+            OneHigherPlayer highPlayer = new OneHigherPlayer();
+            highPlayer.Name = "High Kite Kyle";
 
-            player2.Play(player1);
+            // Smack Talking Player
+            SmackTalkingPlayer smackPlayer = new SmackTalkingPlayer()
+            {
+                Name = "Smacktalking Smoochie Susan",
+                Taunt = "\"You're gonna eat my lips!!!\""
+            };
+
+            // Smack Talking Player plays the High Roller
+            smackPlayer.Play(highPlayer);
+
+            Console.WriteLine("-------------------");
+
+            // ROUND TWO: Creative Smack Talking Player vs Smack Talking Player
+            // Creative Smack Talking Player
+            CreativeSmackTalkingPlayer creativePlayer = new CreativeSmackTalkingPlayer()
+            {
+                Name = "Mean Bean Jim"
+            };
+
+            creativePlayer.Play(smackPlayer);
 
             Console.WriteLine("-------------------");
 
-            Player player3 = new Player();
-            player3.Name = "Wilma";
+            // ROUND Three: Always Higher Player vs Large Dice Player
+            Player largePlayer = new LargeDicePlayer()
+            {
+                Name = "Big Booty Roller"
+            };
 
-            player3.Play(player2);
-
-            Console.WriteLine("-------------------");
-
-            Player large = new LargeDicePlayer();
-            large.Name = "Bigun Rollsalot";
-
-            player1.Play(large);
+            highPlayer.Play(largePlayer);
 
             Console.WriteLine("-------------------");
+
+            // ROUND Four: Human Player vs Sore Loser Player
+            HumanPlayer humanPlayer = new HumanPlayer()
+            {
+                Name = "Human Manny"
+            };
+
+            SoreLoserPlayer sorePlayer = new SoreLoserPlayer()
+            {
+                Name = "Sore Sunny"
+            };
+
+            humanPlayer.Play(sorePlayer);
 
             List<Player> players = new List<Player>() {
-                player1, player2, player3, large
+                highPlayer, smackPlayer, creativePlayer, largePlayer, humanPlayer, sorePlayer
             };
 
             PlayMany(players);
@@ -63,7 +91,7 @@ namespace ShootingDice
             {
                 Console.WriteLine("-------------------");
 
-                // Make adjacent players play noe another
+                // Make adjacent players play one another
                 Player player1 = shuffledPlayers[i];
                 Player player2 = shuffledPlayers[i + 1];
                 player1.Play(player2);
